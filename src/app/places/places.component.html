@@ -1,0 +1,32 @@
+<div>
+    <table style="margin-bottom: 1.75rem">
+        <tr>
+            <td>
+                <button type="button" class="btn btn-outline-primary" (click)="addNewPlace(true)">Add Current
+                    Location</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-primary" (click)="addNewPlace(false)" style="margin-left: 1.75rem">Add New Location</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let place of ( places )">
+                <td>
+                    <a
+                        href="https://www.google.com/maps/place/{{place.latitude}},{{place.longitude}}">{{place.name}}</a>
+                </td>
+                <td>{{place.latitude}}, {{place.longitude}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

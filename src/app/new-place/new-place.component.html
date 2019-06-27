@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h4 class="modal-title">New Location</h4>
+  <button type="button" class="close" (click)="close()">&times;</button>
+</div>
+
+<div class="modal-body">
+  <ngb-alert [dismissible]="true" *ngIf="errorMessage !== ''" (close)="errorMessage = ''">{{ errorMessage }}</ngb-alert>
+  <!-- <div class="alert alert-danger alert-dismissable"
+    style="margin-bottom:0.5rem;padding-top:0.5rem;padding-bottom:0.5rem;padding-left:0.75rem">
+    <button type="button" class="close">&times;</button>
+    <strong>{{addLocationErrorMsg}}</strong>
+  </div> -->
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" (change)="newPlace.name = $event.target.value"
+        value="{{ newPlace.name }}">
+    </div>
+    <div class="form-group">
+      <label for="latitude">Latitude:</label>
+      <input type="number" class="form-control" (change)="newPlace.latitude = $event.target.valueAsNumber"
+        value="{{ newPlace.latitude }}">
+    </div>
+    <div class="form-group">
+      <label for="longitude">Longitude:</label>
+      <input type="number" class="form-control" value="{{ newPlace.longitude }}" (change)="newPlace.longitude = $event.target.valueAsNumber">
+    </div>
+    <!-- <div class="form-group">
+      <label for="accuracy">Accuracy:</label>
+      <label for="accuracyValue" class="form-control">{{newLocationAccuracy}}</label>
+    </div> -->
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="addPlace()">OK</button>
+</div>
+
+<!-- <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Save</button>
+  </div> -->

@@ -1,0 +1,28 @@
+<header class="container-fluid" style="background-color: #762A01">
+    <div class="col-6 offset-3 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-6 offset-lg-3 text-center">
+        <img src="assets/images/logo.jpg" alt="Smiley face" />
+    </div>
+</header>
+
+<body>
+    <div class="container-fluid" style="margin-top: 3rem">
+        <div class="col-6 offset-3 col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
+            <!-- <div id="warning" class="ng-hide alert alert-warning" ng-show="showWarning"><%= info %></div>
+        <div id="enteredUserName" style="display: none"><%= userName %></div> -->
+            <form style="margin-top: 1rem">
+                <div class="form-group">
+                    <h4>User Name:</h4>
+                    <input type="text" class="form-control" (change)="userName=$event.target.value" />
+                </div>
+                <div class="form-group">
+                    <h4>Password:</h4>
+                    <input type="password" class="form-control" name="password" (change)="password=$event.target.value">
+                </div>
+                <!--<div class="form-group submit-div col-2 offset-2 col-sm-2 offset-sm-10 col-md-2 offset-md-10 col-lg-2 offset-10">-->
+                <div class="form-group submit-div">
+                    <input id="login" type="button" value="Login" (click)="login()" class="btn btn-primary float-right">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
