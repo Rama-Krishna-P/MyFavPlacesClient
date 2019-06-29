@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  webapi_baseurl: "http://localhost:3000"
+  webapi_baseurl: "http://localhost:3000",
+  signInRoute: "signIn"
 };
 
 /*

@@ -20,6 +20,7 @@ import { AuthGuard } from './services/auth-guard';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login-service';
 import { EncryptDecryptService } from './services/encrypt-decrypt-service';
+import { RouterService } from './services/router-service';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EncryptDecryptService } from './services/encrypt-decrypt-service';
     },
     AuthGuard,
     LoginService,
-    EncryptDecryptService
+    EncryptDecryptService,
+    RouterService
     ],
   bootstrap: [AppComponent],
   entryComponents: [NewPlaceComponent,

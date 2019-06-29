@@ -1,7 +1,10 @@
 {
   "name": "MyFavPlaces",
   "nativescript": {
-    "id": "org.nativescript.MyFavPlaces"
+    "id": "org.nativescript.MyFavPlaces",
+    "tns-android": {
+      "version": "5.4.0"
+    }
   },
   "version": "0.0.0",
   "scripts": {

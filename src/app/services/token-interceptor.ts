@@ -4,16 +4,18 @@ import { tap, catchError } from "rxjs/operators"
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { EncryptDecryptService } from "./encrypt-decrypt-service";
+import { TokenStorageService } from "./token-storage-service";
 
 @Injectable({ providedIn: 'root' })
 export class TokenInterceptor implements HttpInterceptor {
 
-    constructor(private router: Router, private encryptDecrypt : EncryptDecryptService) {
+    constructor(private router: Router, private encryptDecrypt : EncryptDecryptService, private tokenStorageService : TokenStorageService) {
 
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        let token = localStorage.getItem('user');
+        // let token = localStorage.getItem('user');
+        let token = this.tokenStorageService.getToken();
         let decryptedToken = '';
         
         if(token) {
@@ -24,7 +26,8 @@ export class TokenInterceptor implements HttpInterceptor {
         return next.handle(authReq).pipe(tap((response: any) => {
             if (response.headers && response.headers.get('authorization')) {
                 let encryptedToken = this.encryptDecrypt.set('123456$#@$^@1ERF', response.headers.get('authorization'));
-                localStorage.setItem('user', encryptedToken);
+                //localStorage.setItem('user', encryptedToken);
+                this.tokenStorageService.setToken(encryptedToken);
             }
         }),
             catchError((err: any, caught: any): any => {
@@ -39,6 +42,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     tokenAvailable(): boolean {
-        return !!localStorage.getItem('user');
+        //return !!localStorage.getItem('user');
+       return !!this.tokenStorageService.getToken(); 
     }
 }
