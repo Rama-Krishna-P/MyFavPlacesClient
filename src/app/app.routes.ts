@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './services/auth-guard';
 import { LoginComponent } from './login/login.component';
+import { PlacesComponent } from './places/places.component';
 
 export const routes: Routes = [
   {
@@ -18,5 +19,9 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'places',
+    component: PlacesComponent,
   },
 ];

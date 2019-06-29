@@ -21,6 +21,8 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './services/login-service';
 import { EncryptDecryptService } from './services/encrypt-decrypt-service';
 import { RouterService } from './services/router-service';
+import { FolderSelectionService } from './services/folder-selection-service';
+import { PlaceSelectionService } from './services/place-selection-service';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { RouterService } from './services/router-service';
     AuthGuard,
     LoginService,
     EncryptDecryptService,
-    RouterService
+    RouterService,
+    FolderSelectionService,
+    PlaceSelectionService
     ],
   bootstrap: [AppComponent],
   entryComponents: [NewPlaceComponent,

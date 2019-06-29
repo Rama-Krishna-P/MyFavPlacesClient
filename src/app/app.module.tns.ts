@@ -13,6 +13,15 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms"
 import { HideActionBarDirective } from './directives/hide-action-bar.directive.tns';
 import { TokenStorageService } from './services/token-storage-service.tns';
 import { RouterService } from './services/router-service.tns';
+import { FoldersComponent  } from "./folders/folders.component";
+import { AddNewFolderService } from './services/add-new-folder-service';
+import { FolderService } from './services/folder-service';
+import { PlaceService } from './services/place-service';
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { FolderSelectionService } from './services/folder-selection-service';
+import { AddNewPlaceService } from './services/add-new-place-service';
+import { PlacesComponent } from './places/places.component';
+import { PlaceSelectionService } from './services/place-selection-service';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -26,12 +35,15 @@ import { RouterService } from './services/router-service.tns';
     HomeComponent,
     LoginComponent,
     HideActionBarDirective,
+    FoldersComponent,
+    PlacesComponent
   ],
   imports: [
     NativeScriptModule,
     AppRoutingModule,
     HttpClientModule,
-    NativeScriptFormsModule
+    NativeScriptFormsModule,
+    NativeScriptUIListViewModule
   ],
   providers: [AuthGuard,
     {
@@ -41,7 +53,13 @@ import { RouterService } from './services/router-service.tns';
     },
     LoginService,
     TokenStorageService,
-    RouterService],
+    RouterService,
+    AddNewFolderService,
+    FolderService,
+    PlaceService,
+    FolderSelectionService,
+    AddNewPlaceService,
+    PlaceSelectionService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

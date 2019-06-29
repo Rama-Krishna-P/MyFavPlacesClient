@@ -5,6 +5,7 @@ import { AddNewFolderService } from "../services/add-new-folder-service";
 import { FolderService } from "../services/folder-service";
 import { PlaceService } from "../services/place-service";
 import { Place } from "../models/Place";
+import { FolderSelectionService } from "../services/folder-selection-service";
 
 @Component({
     selector: 'app-folders',
@@ -18,7 +19,8 @@ export class FoldersComponent implements OnInit {
     constructor(private addNewFolderService: AddNewFolderService,
         private ref: ChangeDetectorRef,
         private folderService: FolderService,
-        private placeService: PlaceService) {
+        private placeService: PlaceService,
+        private folderSelectionService: FolderSelectionService) {
 
     }
 
@@ -30,13 +32,14 @@ export class FoldersComponent implements OnInit {
         });
     }
 
-    async folderSelected(selectedFolder: Folder) {
+    async folderSelected(selectedFolder: any) {
         try {
             if (selectedFolder.places == null || selectedFolder.places.length === 0) {
                 selectedFolder.places = await this.placeService.getAllPlaces(selectedFolder.id);
             }
 
             this.selectedFolder = selectedFolder;
+            this.folderSelectionService.selectFolder(this.selectedFolder);
         } catch (error) {
             console.log(error);
         }

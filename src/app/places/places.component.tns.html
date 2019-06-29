@@ -1,0 +1,9 @@
+<ActionBar [title]="folder.name"></ActionBar>
+<RadListView class="list-group p-20" [items]="places" selectionBehavior="Press"
+    (itemSelected)="placeSelected($event.object.getSelectedItems()[0])">
+    <ng-template tkListItemTemplate let-item="item">
+        <FlexboxLayout flexDirection="row" class="list-group-item">
+            <Label class="nameLabel" [text]="item.name"></Label>
+        </FlexboxLayout>
+    </ng-template>
+</RadListView>
