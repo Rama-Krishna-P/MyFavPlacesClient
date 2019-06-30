@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Folder } from "../models/Folder";
 import { FolderService } from "../services/folder-service";
 
@@ -10,11 +10,13 @@ export class NewFolderComponent {
     name: string = ''
     errorMessage: string = ''
 
+    @Output('onFolderAdded')
     folderAdded: EventEmitter<Folder> = new EventEmitter<Folder>();
+    
+    @Output('onFolderAddCancelled')
     addFolderCancelled: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(private folderService: FolderService) {
-
     }
 
     async addFolder() {

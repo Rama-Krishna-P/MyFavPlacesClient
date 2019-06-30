@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef, ViewContainerRef } from "@angular/core";
 import { Folder } from "../models/Folder";
 import { TestBed } from "@angular/core/testing";
 import { AddNewFolderService } from "../services/add-new-folder-service";
@@ -20,7 +20,8 @@ export class FoldersComponent implements OnInit {
         private ref: ChangeDetectorRef,
         private folderService: FolderService,
         private placeService: PlaceService,
-        private folderSelectionService: FolderSelectionService) {
+        private folderSelectionService: FolderSelectionService,
+        private viewContainerRef: ViewContainerRef) {
 
     }
 
@@ -47,9 +48,11 @@ export class FoldersComponent implements OnInit {
 
     async addFolder() {
         try {
-            let newFolder: Folder = await this.addNewFolderService.addFolder();
-            this.folders.push(newFolder);
-            this.ref.markForCheck();
+            let newFolder: Folder = await this.addNewFolderService.addFolder(this.viewContainerRef);
+            if (newFolder) {
+                this.folders.push(newFolder);
+                this.ref.markForCheck();
+            }
         } catch (error) {
 
         }

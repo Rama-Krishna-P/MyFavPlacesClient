@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
 @Injectable()  
 export class AddNewPlaceService implements IAddNewPlaceService {
     addNewPlace(currentLocation: boolean, folder: any): Promise<any> {
-        throw new Error("Method not implemented.");
+        return new Promise((res, rej) => {
+            
+        });
     }
 }

@@ -22,7 +22,9 @@ import { FolderSelectionService } from './services/folder-selection-service';
 import { AddNewPlaceService } from './services/add-new-place-service';
 import { PlacesComponent } from './places/places.component';
 import { PlaceSelectionService } from './services/place-selection-service';
-
+import { NewFolderComponent } from './new-folder/new-folder.component';
+import { NewFolderModalComponent } from './new-folder/new-folder-modal.component.tns';
+  
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
@@ -36,7 +38,9 @@ import { PlaceSelectionService } from './services/place-selection-service';
     LoginComponent,
     HideActionBarDirective,
     FoldersComponent,
-    PlacesComponent
+    PlacesComponent,
+    NewFolderModalComponent,
+    NewFolderComponent
   ],
   imports: [
     NativeScriptModule,
@@ -61,6 +65,7 @@ import { PlaceSelectionService } from './services/place-selection-service';
     AddNewPlaceService,
     PlaceSelectionService],
   bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA],
+  entryComponents: [NewFolderModalComponent]
 })
 export class AppModule { }

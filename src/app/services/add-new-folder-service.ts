@@ -10,7 +10,7 @@ export class AddNewFolderService implements IAddNewFolderService {
 
     }
 
-    async addFolder(): Promise<Folder> {
+    async addFolder(param: any): Promise<Folder> {
         try {
             const ref = this.modal.open(NewFolderComponent);
             let newFolderComponent: NewFolderComponent = ref.componentInstance as NewFolderComponent;
