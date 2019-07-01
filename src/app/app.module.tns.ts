@@ -13,7 +13,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms"
 import { HideActionBarDirective } from './directives/hide-action-bar.directive.tns';
 import { TokenStorageService } from './services/token-storage-service.tns';
 import { RouterService } from './services/router-service.tns';
-import { FoldersComponent  } from "./folders/folders.component";
+import { FoldersComponent } from "./folders/folders.component";
 import { AddNewFolderService } from './services/add-new-folder-service';
 import { FolderService } from './services/folder-service';
 import { PlaceService } from './services/place-service';
@@ -24,7 +24,12 @@ import { PlacesComponent } from './places/places.component';
 import { PlaceSelectionService } from './services/place-selection-service';
 import { NewFolderComponent } from './new-folder/new-folder.component';
 import { NewFolderModalComponent } from './new-folder/new-folder-modal.component.tns';
-  
+import { AddNewPlaceModalService } from './services/add-new-place-modal-service';
+import { NewPlaceModalComponent } from './new-place/new-place-modal.component.tns';
+import { UUIDGenerationService } from './services/uuid-generation-service';
+import { LocationService } from './services/location-service';
+import { NewPlaceComponent } from './new-place/new-place.component';
+
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
@@ -40,7 +45,9 @@ import { NewFolderModalComponent } from './new-folder/new-folder-modal.component
     FoldersComponent,
     PlacesComponent,
     NewFolderModalComponent,
-    NewFolderComponent
+    NewFolderComponent,
+    NewPlaceModalComponent,
+    NewPlaceComponent,
   ],
   imports: [
     NativeScriptModule,
@@ -63,9 +70,12 @@ import { NewFolderModalComponent } from './new-folder/new-folder-modal.component
     PlaceService,
     FolderSelectionService,
     AddNewPlaceService,
-    PlaceSelectionService],
+    PlaceSelectionService,
+    AddNewPlaceModalService,
+    UUIDGenerationService,
+    LocationService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],
-  entryComponents: [NewFolderModalComponent]
+  entryComponents: [NewFolderModalComponent, NewPlaceModalComponent]
 })
 export class AppModule { }

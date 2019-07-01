@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 import { Place } from "../models/Place";
 import { Folder } from "../models/Folder";
 import { PlaceService } from "../services/place-service";
@@ -9,7 +9,10 @@ import { PlaceService } from "../services/place-service";
 })
 export class NewPlaceComponent {
     
+    @Output()
     placeAdded: EventEmitter<Place> = new EventEmitter<Place>();
+    
+    @Output()
     addPlaceCancelled: EventEmitter<void> = new EventEmitter<void>();
 
     @Input('newPlace')
@@ -21,7 +24,7 @@ export class NewPlaceComponent {
     errorMessage: string = '';
 
     constructor(private placeService: PlaceService) {
-
+        
     }
 
     async addPlace() {

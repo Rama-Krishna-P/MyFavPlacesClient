@@ -40,6 +40,8 @@ testem.log
 
 # System Files
 .DS_Store
+
+*.keystore
 Thumbs.db
 
 index.html

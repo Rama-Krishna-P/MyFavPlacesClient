@@ -1,4 +1,7 @@
-<ActionBar [title]="folder.name"></ActionBar>
+<ActionBar [title]="folder.name">
+    <ActionItem text="Add Location" (tap)="addNewPlace(false)" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Add Current Location" (tap)="addNewPlace(true)" ios.position="right" android.position="popup"></ActionItem>
+    </ActionBar>
 <RadListView class="list-group p-20" [items]="places" selectionBehavior="Press"
     (itemSelected)="placeSelected($event.object.getSelectedItems()[0])">
     <ng-template tkListItemTemplate let-item="item">

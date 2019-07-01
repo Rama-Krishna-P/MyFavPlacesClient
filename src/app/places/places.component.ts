@@ -1,6 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, ViewContainerRef } from "@angular/core";
 import { Place } from "../models/Place";
-import { LocationService } from "../services/location-service";
 import { AddNewPlaceService } from "../services/add-new-place-service";
 import { Folder } from "../models/Folder";
 import { Router } from "@angular/router";
@@ -21,7 +20,8 @@ export class PlacesComponent {
     constructor(private addNewPlaceService: AddNewPlaceService, 
                 private ref: ChangeDetectorRef, 
                 private router: Router,
-                private placeSelectionService: PlaceSelectionService) {
+                private placeSelectionService: PlaceSelectionService,
+                private viewContainerRef: ViewContainerRef) {
         if (this.router.getCurrentNavigation()) {
             this.folder = this.router.getCurrentNavigation().extras.state.selectedFolder;
             this.places = this.folder.places;
@@ -30,9 +30,12 @@ export class PlacesComponent {
 
     async addNewPlace(currentLocation: boolean) {
         try {
-            let place: Place = await this.addNewPlaceService.addNewPlace(currentLocation, this.folder);
-            this.places.push(place);
-            this.ref.markForCheck();
+            console.log('here');
+            let place: Place = await this.addNewPlaceService.addNewPlace(currentLocation, this.folder, this.viewContainerRef);
+            if (place) {
+                this.places.push(place);
+                this.ref.markForCheck();
+            }
         } catch (error) {
 
         }

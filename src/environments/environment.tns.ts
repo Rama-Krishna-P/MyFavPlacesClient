@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    webapi_baseurl: "http://10.0.2.2:3000",
+    webapi_baseurl: "https://my-fav-places.herokuapp.com",
     signInRoute: "signInApp"
 };

@@ -1,22 +1,23 @@
 import { IAddNewPlaceService } from "./interfaces/add-new-place-service-interface";
 import { Place } from "../models/Place";
 import { Injectable } from "@angular/core";
-import { NewPlaceComponent } from "../new-place/new-place.component";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { LocationService } from "./location-service";
 import { Folder } from "../models/Folder";
-import * as uuid from "uuid";
+import { AddNewPlaceModalService } from "./add-new-place-modal-service";
+import { UUIDGenerationService } from "./uuid-generation-service";
 
 @Injectable()
 export class AddNewPlaceService implements IAddNewPlaceService {
 
-    constructor(private modal: NgbModal, private locationService: LocationService) {
+    constructor(private addNewPlaceModalService: AddNewPlaceModalService, 
+                private locationService: LocationService,
+                private uuidGenerator: UUIDGenerationService) {
 
     }
 
-    async addNewPlace(currentLocation: boolean, folder: Folder): Promise<Place> {
+    async addNewPlace(currentLocation: boolean, folder: Folder, viewContainerRef: any): Promise<Place> {
         try {
-            let newPlace = await this.addNewPlaceCore(currentLocation, folder);
+            let newPlace = await this.addNewPlaceCore(currentLocation, folder, viewContainerRef);
             return newPlace;
 
         } catch (error) {
@@ -24,7 +25,7 @@ export class AddNewPlaceService implements IAddNewPlaceService {
         }
     }
 
-    private async addNewPlaceCore(currentLocation: boolean, folder: Folder): Promise<Place> {
+    private async addNewPlaceCore(currentLocation: boolean, folder: Folder, viewContainerRef: any): Promise<Place> {
         let newPlace: Place = this.createNewPlace();
 
         try {
@@ -34,23 +35,7 @@ export class AddNewPlaceService implements IAddNewPlaceService {
                 newPlace.longitude = location.longitude;
             }
 
-            let modalRef = this.modal.open(NewPlaceComponent);
-            let newPlaceComponent = modalRef.componentInstance as NewPlaceComponent;
-
-            newPlaceComponent.newPlace = newPlace;
-            newPlaceComponent.selectedFolder = folder;
-
-            newPlaceComponent.addPlaceCancelled.subscribe(() => {
-                modalRef.dismiss();
-            });
-
-            newPlaceComponent.placeAdded.subscribe((place: Place) => {
-                modalRef.close(place);
-            });
-
-            newPlace = await modalRef.result;
-
-            return newPlace;
+            return this.addNewPlaceModalService.addNewPlace(newPlace, folder, viewContainerRef);
         } 
         catch (error) {
             throw error;
@@ -59,7 +44,7 @@ export class AddNewPlaceService implements IAddNewPlaceService {
 
     private createNewPlace(): Place {
         return {
-            id: uuid(),
+            id: this.uuidGenerator.getUUID(),
             latitude: 0.0,
             longitude: 0.0,
             name: ''

@@ -23,6 +23,8 @@ import { EncryptDecryptService } from './services/encrypt-decrypt-service';
 import { RouterService } from './services/router-service';
 import { FolderSelectionService } from './services/folder-selection-service';
 import { PlaceSelectionService } from './services/place-selection-service';
+import { AddNewPlaceModalService } from './services/add-new-place-modal-service';
+import { UUIDGenerationService } from './services/uuid-generation-service';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import { PlaceSelectionService } from './services/place-selection-service';
     EncryptDecryptService,
     RouterService,
     FolderSelectionService,
-    PlaceSelectionService
+    PlaceSelectionService,
+    AddNewPlaceModalService,
+    UUIDGenerationService,
     ],
   bootstrap: [AppComponent],
   entryComponents: [NewPlaceComponent,

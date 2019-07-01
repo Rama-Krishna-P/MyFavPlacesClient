@@ -1,0 +1,9 @@
+<StackLayout class="p-20" orientation="vertical" width="300">
+    <Label text="Name:"></Label>
+    <TextField marginBottom="10" [(ngModel)]='newPlace.name'></TextField>
+    <Label text="Latitude:"></Label>
+    <TextField marginBottom="10" [(ngModel)]='newPlace.latitude'></TextField>
+    <Label text="Longitude:"></Label>
+    <TextField marginBottom="10" [(ngModel)]='newPlace.longitude'></TextField>
+    <Button text="Submit" (tap)="addPlace()"></Button>
+</StackLayout>
